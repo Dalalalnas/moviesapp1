@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moviesapp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<body>
+<div id="banner">
+	<%= image_tag("sad.jpg", :size => "100x50") %>
+	<%= @page_title || "Movies We Love" %>
+</div>
+
+<div id="nav">
+    <ul>
+
+	<% if !signed_in? %>
+		<li><%= link_to "Sign In", signin_path %></li>		
+	<% else %>
+		<li>Signed in as <%= @current_user.name %></li>
+		<li><%= link_to "Sign Out", signout_path %></li>
+
+	<%end %>
+
+	
+      <li><%= link_to "About us", about_path%></li>
+      <li><%= link_to "Movie News", 'http://oscar.go.com/nominees' %></li>
+      <li><%= mail_to "natashacole@hotmail.com", "Contact us" %></li>	
+      <li><%= link_to "Movies", movies_path%></li>
+    </ul>
+</div>
+<br \>
+
+
+	
+
+
+
+
+
+
+<%= yield %>
+<p id="notice"><%= notice %></p>
+<h2>This is the bottom of the page after the yiel</h2>
+
+</body>
+</html>
